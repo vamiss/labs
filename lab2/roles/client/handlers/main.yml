@@ -1,0 +1,6 @@
+---
+- name: Start
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes

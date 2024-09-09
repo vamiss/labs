@@ -1,0 +1,12 @@
+---
+# handlers file for balance
+- name: Start haproxy
+  systemd:
+    name: haproxy
+    state: restarted
+    enabled: yes
+- name: Start keepalived
+  systemd:
+    name: keepalived
+    state: restarted
+    enabled: yes

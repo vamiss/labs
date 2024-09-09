@@ -1,0 +1,16 @@
+---
+- name: Reboot
+  hosts: all
+  become: true
+  roles:
+    - selinux
+- name: Install nginx package from repo
+  hosts: webservers
+  become: true
+  roles:
+    - clients
+- name: Install nginx package from repo
+  hosts: balancer
+  become: true
+  roles:
+    - balance

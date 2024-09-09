@@ -1,0 +1,24 @@
+---
+# tasks file for balance
+- name: Install haproxy and keepalived from repo
+  yum:
+    name: 
+      - haproxy
+      - keepalived
+    state: latest
+  tags:
+    - packages
+- name: Create haproxy config file
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+  tags:
+    haproxy-configuration
+  notify: Start haproxy
+- name: Create keepalived config file
+  template:
+    src: keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+  tags:
+    keepalived-configuration
+  notify: Start keepalived
